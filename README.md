@@ -2,6 +2,8 @@
 
 > Uma central de software para Ubuntu's Customizados.
 
+![Example](./example.gif)
+
 ## Scaffolding
 
 ```
@@ -45,7 +47,3 @@ Administrativo.csv
 App1
 AppN
 ```
-
-## Demo
-
-![Example](./example.gif)
