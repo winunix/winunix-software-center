@@ -89,3 +89,5 @@ os.system('rm apps.tmp')
 for mod in moduleList:
 	if mod['name'] in modArr:
 		os.system('cd ./modules/'+mod['name']+'/ && ./install')
+	else:
+		os.system('cd ./modules/'+mod['name']+'/ && ./install -u')

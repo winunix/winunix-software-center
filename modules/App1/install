@@ -1,3 +1,7 @@
 #!/bin/bash
 
-echo "APP1 INSTALLED!"
+if [ "$1" == "-u" ]; then
+    echo "APP1 REMOVED!"
+else
+    echo "APP1 INSTALLED!"
+fi

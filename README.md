@@ -26,7 +26,7 @@ winunix-software-center/
 
 ## Da pasta modules
 
-Todo App ser deve ficar nessa pasta com um arquivo `install` com permissão de leitura e execução.
+Todo App deve ficar nessa pasta com um arquivo `install` com permissão de leitura e execução.
 
 O arquivo `manifest.json` descreve como será apresentado na janela da central. Deve conter um atributo *name* e *description* conforme o exemplo abaixo:
 
