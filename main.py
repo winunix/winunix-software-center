@@ -93,4 +93,4 @@ for mod in moduleList:
 	else:
 		os.system('cd ./modules/'+mod['name']+'/ && ./install -u')
 	os.system("sleep 1 && pkill zenity")
-os.system("zenity --info --width=200 --text='Processos Finalizado!'")
+os.system("./zprogress SuperUser &")
