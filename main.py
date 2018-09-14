@@ -87,7 +87,10 @@ with open('apps.tmp', 'r') as tmp:
 modArr = modStr.split(":")
 os.system('rm apps.tmp')
 for mod in moduleList:
+	os.system("./zprogress "+mod['name']+" &")
 	if mod['name'] in modArr:
 		os.system('cd ./modules/'+mod['name']+'/ && ./install')
 	else:
 		os.system('cd ./modules/'+mod['name']+'/ && ./install -u')
+	os.system("sleep 1 && pkill zenity")
+os.system("zenity --info --width=200 --text='Processos Finalizado!'")
