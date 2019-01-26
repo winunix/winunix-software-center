@@ -2,4 +2,4 @@
 
 sleep 5000|tee >(zenity --progress --pulsate \
 --no-cancel --auto-close --text="Espere um pouco..." \
---title="Processando $1" --width=300)
+--title="Processando $1" --width=350)
