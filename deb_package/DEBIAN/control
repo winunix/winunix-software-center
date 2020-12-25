@@ -5,6 +5,7 @@ Maintainer: crasheddie <crash.eddie123@gmail.com>
 Section: utils
 Architecture: all
 Priority: optional
+Depends: python, zenity
 Homepage: https://winunix.github.io
 Description: PosInstall for Lubuntu.
- An gui script for install apps post installed system.
+ A GUI script for install apps post installed system.

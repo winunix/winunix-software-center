@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=/usr/bin/winunix-software-center
+Name=WXCenter
+Type=Application
+Version=1.0

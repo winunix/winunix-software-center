@@ -1,2 +1,24 @@
 #!/bin/bash
 
+function runByUsers {
+	# $1 is default folder of user
+	# $2 is name of user
+	cd $1
+	autostart="$1/.config/autostart/wx-center.desktop"
+    if [ -f $autostart ]; then
+        runuser -l $2 -c "rm -rf $autostart"
+    fi
+}
+
+# Get Names of users
+cat /etc/passwd | grep '/home/' | grep -v 'cups\|syslog\|mysql\|mongodb' | \
+cut -d':' -f1 > /tmp/homes.list
+
+while read USUARIO; do
+	runByUsers "/home/$USUARIO" "$USUARIO"
+ 	runuser -l $USUARIO -c "rm -rf /home/$USUARIO/.cache/"
+ 	if [ -f /usr/bin/lxpanelctl ]; then
+		su - $USUARIO -c "lxpanelctl restart"
+ 	fi
+done < /tmp/homes.list
+runByUsers "/etc/skel" "root"
