@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Get Names of users
+cat /etc/passwd | grep '/home/' | grep -v 'cups\|syslog\|mysql\|mongodb' | \
+cut -d':' -f1 > /tmp/homes.list
+
+function runByUsers {
+	# $1 is default folder of user
+	# $2 is name of user
+	cd $1
+    # 18
+	lxsession="$1/.config/lxsession/Lubuntu/"
+	runuser -l $2 -c "mkdir -p $lxsession"
+	runuser -l $2 -c "touch $lxsession/autostart"
+    runuser -l $2 -c "echo '/usr/bin/winunix-software-center' > $lxsession/autostart"
+}
+
+while read USUARIO; do
+	runByUsers "/home/$USUARIO" "$USUARIO"
+ 	runuser -l $USUARIO -c "rm -rf /home/$USUARIO/.cache/"
+ 	if [ -f /usr/bin/lxpanelctl ]; then
+		su - $USUARIO -c "lxpanelctl restart"
+ 	fi
+done < /tmp/homes.list
+runByUsers "/etc/skel" "root"
