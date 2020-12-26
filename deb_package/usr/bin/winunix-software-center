@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cd /usr/wx-center
-cp -rf superuser.execute /tmp/
 ./main.py 2>&1 >>/tmp/log$(date '+%Y%m%d.%H%M%S')
 rm -rf ~/.config/autostart/wx-center.desktop
 # killall pcmanfm

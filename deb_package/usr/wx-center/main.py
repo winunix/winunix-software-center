@@ -89,8 +89,11 @@ def generate_apps_box():
     os.system(box_apps)
 
 
-def progress(title):
-    return " | zenity --progress --no-cancel --auto-close --text=\"Espere um pouco...\" --title=\"Processando "+title+"\" --width=350"
+def progress(title, pulse=False):
+    if (pulse):
+        return " | zenity --progress --pulsate --no-cancel --auto-close --text=\"Espere um pouco...\" --title=\"Processando "+title+"\" --width=450"
+    else:
+        return " | zenity --progress --no-cancel --auto-close --text=\"Espere um pouco...\" --title=\"Processando "+title+"\" --width=450"
 
 
 generate_apps_box()
@@ -105,6 +108,5 @@ for mod in module_list:
     else:
         os.system('cd ./modules/'+mod['name'] +
                   '/ && ./install -u'+progress(mod['name']))
-
-os.system("echo 'apt autoremove -y' >> /tmp/superuser.execute")
-os.system("pkexec /tmp/superuser.execute"+progress('Superusuário'))
+os.system("pkexec /usr/wx-center/superuser.sh 'autoremove'" +
+          progress('Superusuário', True))
