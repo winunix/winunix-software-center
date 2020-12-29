@@ -1,11 +1,11 @@
 Package: winunix-software-center
 Version: 0.0.1
-Installed-Size: 1
+Installed-Size: 7
 Maintainer: crasheddie <crash.eddie123@gmail.com>
 Section: utils
 Architecture: all
 Priority: optional
-Depends: python, zenity
+Depends: python | python-is-python2, zenity
 Homepage: https://winunix.github.io
 Description: PosInstall for Lubuntu.
  A GUI script for install apps post installed system.
