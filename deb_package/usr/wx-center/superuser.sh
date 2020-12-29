@@ -17,6 +17,8 @@ if [ "$1" == "EvinceThumbnails" ]; then
         apparmor_parser -r $armorFile
     fi
     echo 100
+elif [ "$1" == "Win10Theme.p" ]; then
+    apt install /usr/wx-center/modules/Win10Theme.p/*.deb -y 2>&1 >>/tmp/log$(date '+%Y%m%d.%H%M%S')
 elif [ "$1" == "autoremove" ]; then
     apt autoremove -y 2>&1 >>/tmp/log$(date '+%Y%m%d.%H%M%S')
 fi

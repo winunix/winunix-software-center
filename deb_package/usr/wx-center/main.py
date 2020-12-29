@@ -102,11 +102,12 @@ with open('apps.tmp', 'r') as tmp:
 mod_arr = modStr.split(":")
 os.system('rm apps.tmp')
 for mod in module_list:
+    pulse = True if ".p" in mod['name'] else False
     if mod['name'] in mod_arr:
         os.system('cd ./modules/'+mod['name'] +
-                  '/ && ./install'+progress(mod['name']))
+                  '/ && ./install'+progress(mod['name'], pulse))
     else:
         os.system('cd ./modules/'+mod['name'] +
-                  '/ && ./install -u'+progress(mod['name']))
+                  '/ && ./install -u'+progress(mod['name'], pulse))
 os.system("pkexec /usr/wx-center/superuser.sh 'autoremove'" +
           progress('Superusuário', True))
