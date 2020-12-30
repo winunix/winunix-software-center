@@ -21,3 +21,5 @@ while read USUARIO; do
  	fi
 done < /tmp/homes.list
 runByUsers "/etc/skel" "root"
+
+chmod 777 -R /usr/wx-center/
