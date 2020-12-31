@@ -1,24 +1,17 @@
 #!/bin/bash
 
 echo 0
-if [ "$1" == "EvinceThumbnails" ]; then
-    codeName=$(cat /etc/lsb-release | grep DISTRIB_CODENAME | cut -d'=' -f2)
-    armorFile="/etc/apparmor.d/usr.bin.evince"
-    hadWxFixed=$(cat $armorFile | grep "WinuniX")
-    echo 50
-    if [ "$hadWxFixed" == "" ]; then
-        NUM=$(cat $armorFile | grep 'owner /tmp/evince-thumbnailer\*/{,\*\*} rw,' -n | cut -d':' -f1)
-        sed -i $(($NUM + 1))"i\ \ # WinuniX added this line" $armorFile
-        if [ "$codeName" == "bionic" ]; then
-            sed -i $(($NUM + 2))"i\ \ owner /home/\*/.thumbnails/\*/\*.\* rw," $armorFile
-        else
-            sed -i $(($NUM + 2))"i\ \ owner /home/\*/.cache/thumbnails/\*/\*.\* rw," $armorFile
-        fi
-        apparmor_parser -r $armorFile
+cd /usr/wx-center/modules/
+ls -1d */ >/tmp/modules.wxcenter
+cd -
+
+while read MODULE; do
+    if [ "$1/" == "$MODULE" ]; then
+        source /usr/wx-center/modules/${MODULE}superuser.sh
+        break
     fi
-    echo 100
-elif [ "$1" == "Win10Theme.p" ]; then
-    apt install /usr/wx-center/modules/Win10Theme.p/*.deb -y 2>&1 >>/tmp/log$(date '+%Y%m%d.%H%M%S')
-elif [ "$1" == "autoremove" ]; then
+done </tmp/modules.wxcenter
+
+if [ "$1" == "autoremove" ]; then
     apt autoremove -y 2>&1 >>/tmp/log$(date '+%Y%m%d.%H%M%S')
 fi
