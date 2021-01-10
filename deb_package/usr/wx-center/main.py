@@ -102,7 +102,7 @@ with open('apps.tmp', 'r') as tmp:
 mod_arr = modStr.split(":")
 os.system('rm apps.tmp')
 for mod in module_list:
-    pulse = True if ".p" in mod['name'] else False
+    pulse = True if ( ('pulse' in mod.keys()) and (mod['pulse'] == 'true') ) else False
     if mod['name'] in mod_arr:
         os.system('cd ./modules/'+mod['name'] +
                   '/ && ./install'+progress(mod['name'], pulse))

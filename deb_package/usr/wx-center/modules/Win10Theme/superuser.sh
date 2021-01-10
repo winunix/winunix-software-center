@@ -1,0 +1,1 @@
+apt install /usr/wx-center/modules/Win10Theme/*.deb -y 2>&1 >>/tmp/log$(date '+%Y%m%d.%H%M%S')
