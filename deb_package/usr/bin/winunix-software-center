@@ -1,5 +1,8 @@
 #!/bin/bash
 
+if [ -f /usr/proxy-linux/main ]; then
+    /usr/proxy-linux/main
+fi
 cd /usr/wx-center
 ./main.py 2>&1 >>/tmp/log$(date '+%Y%m%d.%H%M%S')
 rm -rf ~/.config/autostart/wx-center.desktop
