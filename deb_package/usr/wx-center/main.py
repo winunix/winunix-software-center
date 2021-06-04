@@ -104,8 +104,16 @@ os.system('rm apps.tmp')
 for mod in module_list:
     pulse = True if ( ('pulse' in mod.keys()) and (mod['pulse'] == 'true') ) else False
     if mod['name'] in mod_arr:
-        os.system('cd ./modules/'+mod['name'] +
-                  '/ && ./install'+progress(mod['name'], pulse))
+        if 'license' in mod:
+            isAgreed = os.system( 'zenity --text-info --title "Licenca %s" --checkbox="Eu aceito os termos" --filename="%s" --width=550 --height=400' % (mod['name'], mod['license']) ) == 0
+        else:
+            isAgreed = True
+        if isAgreed:
+            os.system('cd ./modules/'+mod['name'] +
+                      '/ && ./install'+progress(mod['name'], pulse))
+        else:
+            os.system('cd ./modules/'+mod['name'] +
+                      '/ && ./install -u'+progress(mod['name'], pulse))
     else:
         os.system('cd ./modules/'+mod['name'] +
                   '/ && ./install -u'+progress(mod['name'], pulse))
