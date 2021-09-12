@@ -86,7 +86,7 @@ def generate_apps_box():
 	--column="Descricao" --width=700 --height=400 --separator=':' \\
 	"""+frag+"""
 	) 2>/dev/null && echo $softs > apps.tmp"""
-    os.system(box_apps)
+    os.system(box_apps.encode("utf-8"))
 
 
 def progress(title, pulse=False):
