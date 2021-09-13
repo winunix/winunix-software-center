@@ -9,3 +9,5 @@ rm -rf ~/.config/autostart/wx-center.desktop
 # killall pcmanfm
 # pcmanfm --desktop --profile lubuntu &
 zenity --info --width=300 --text="Processos Finalizado!\n\nÉ aconselhado reiniciar a máquina!"
+killall lxqt-session
+killall lxsession
