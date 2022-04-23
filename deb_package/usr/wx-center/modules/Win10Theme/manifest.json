@@ -1,6 +1,0 @@
-{
-	"name": "Win10Theme",
-	"description": "Ativar tema, icones e taskbar do Windows 10",
-	"license": "/usr/wx-center/modules/Win10Theme/license.txt",
-	"pulse": "true"
-}
